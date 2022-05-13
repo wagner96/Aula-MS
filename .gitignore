@@ -5,3 +5,7 @@ MS.Orders/.serverless
 MS.Auth/node_modules
 MS.Delivery/node_modules
 MS.Orders/node_modules
+
+MS.Auth/package-lock.json
+MS.Delivery/package-lock.json
+MS.Orders/package-lock.json
