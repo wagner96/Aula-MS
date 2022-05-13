@@ -1,0 +1,47 @@
+service: ms-auth
+frameworkVersion: "2"
+plugins:
+  - serverless-offline
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+  apiGateway:
+    restApiId: 13278olfa9
+    restApiRootResourceId: 4n5x0q1jo8
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - cognito-sync:*
+            - cognito-idp:*
+            - cognito-identity:*
+          Resource: "*"
+custom:
+  baseApi: auth
+  serverless-offline:
+    httpPort: 4000
+    websocketPort: 4001
+    lambdaPort: 4002
+functions:
+  registerUser:
+    handler: register.submit
+    memorySize: 128
+    description: Register User
+    timeout: 30
+    events:
+      - http:
+          path: ${self:custom.baseApi}/register
+          method: post
+          cors: true
+  loginUser:
+    handler: login.submit
+    memorySize: 128
+    description: Login
+    timeout: 30
+    events:
+      - http:
+          path: ${self:custom.baseApi}/login
+          method: post
+          cors: true

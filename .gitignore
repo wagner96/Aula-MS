@@ -1,0 +1,7 @@
+MS.Auth/.serverless
+MS.Delivery/.serverless
+MS.Orders/.serverless
+
+MS.Auth/node_modules
+MS.Delivery/node_modules
+MS.Orders/node_modules

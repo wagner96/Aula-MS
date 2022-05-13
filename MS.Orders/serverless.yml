@@ -1,0 +1,42 @@
+service: ms-order
+frameworkVersion: "2"
+plugins:
+  - serverless-offline
+custom:
+  baseApi: orders
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+  apiGateway:
+    restApiId: 13278olfa9
+    restApiRootResourceId: 4n5x0q1jo8
+functions:
+  confirmOrder:
+    handler: confirm.submit
+    memorySize: 128
+    description: Confirm Order
+    timeout: 10
+    events:
+      - http:
+          path: ${self:custom.baseApi}/confirm
+          method: post
+          cors: true
+  getOrder:
+    handler: get.submit
+    memorySize: 128
+    description: Get Order
+    timeout: 10
+    events:
+      - http:
+          path: ${self:custom.baseApi}/{id}
+          method: get
+          cors: true
+
+  receiveStatusOrder:
+    handler: receive.submit
+    memorySize: 128
+    description: Receive Status Order
+    timeout: 10
+    events:
+      - schedule: rate(1 minute)

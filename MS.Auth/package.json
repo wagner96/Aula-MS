@@ -1,0 +1,23 @@
+{
+  "name": "ms-auth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "serverless-offline": "^7.0.0"
+  },
+  "dependencies": {
+    "amazon-cognito-identity-js": "^5.2.8",
+    "aws-sdk": "^2.1116.0",
+    "axios": "^0.26.1",
+    "bluebird": "^3.7.2",
+    "dotenv": "^16.0.1",
+    "uuid": "^8.3.2"
+  }
+}

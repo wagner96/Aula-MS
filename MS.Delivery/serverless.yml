@@ -1,0 +1,39 @@
+service: ms-delivery
+frameworkVersion: "2"
+plugins:
+  - serverless-offline
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+  apiGateway:
+    restApiId: 13278olfa9
+    restApiRootResourceId: 4n5x0q1jo8
+custom:
+  baseApi: delivery
+  serverless-offline:
+    httpPort: 4000
+    websocketPort: 4001
+    lambdaPort: 4002
+functions:
+  registerDelivery:
+    handler: register.submit
+    memorySize: 128
+    description: Register Delivery
+    timeout: 10
+    events:
+      - http:
+          path: ${self:custom.baseApi}/register
+          method: post
+          cors: true
+
+  updateDelivery:
+    handler: update.submit
+    memorySize: 128
+    description: Update Delivery
+    timeout: 10
+    events:
+      - http:
+          path: ${self:custom.baseApi}/{id}
+          method: put
+          cors: true
